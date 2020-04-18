@@ -1,26 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import FileUpload from './FileUpload.js';
+import SaveTaskButton from './SaveTaskButton.js';
+import InputField from '../login/InputField.js';
 
-const NewTaskForm = () => (
-    <Form>
-        <h2>Add new task</h2>
-        <hr />
-        <Form.Group controlId="formBasicEmail">
-            <Form.Label>Task name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name" />
-        </Form.Group>
+class NewTaskForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            buttonDisabled: true,
+            uploadedFile: false,
+            taskName: ''
+        }
+    }
 
-        <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+    async saveTask() {
+        if (!this.state.taskName) {
+            return;
+        }
+        if (!this.state.uploadedFile) {
+            return;
+        }
+        this.setState({
+            buttonDisabled: false
+        })
+    }
 
-        <FileUpload />
-    </Form>
-);
+    async isFileChosen() {
+        if (!document.getElementById("inputFile").value) {
+            this.setState({
+                uploadedFile: true
+            })
+        }
+    }
+
+    setInputValue(property, val) {
+        val = val.trim();
+        if (val.length < 1) {
+            return;
+        }
+        this.setState({
+            [property]: val
+        })
+    }
+
+    render() {
+        return (
+            <Form>
+                <h2>Add new task</h2>
+                <hr />
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Task name</Form.Label>
+                    <InputField
+                        type="text"
+                        placeholder="Enter task name"
+                        value={this.state.taskName ? this.state.taskName : ''}
+                        onChange={(val) => this.setInputValue('taskName', val)}
+                    />
+                </Form.Group>
+                <FileUpload 
+                    value={this.state.uploadedFile ? this.state.uploadedFile : ''}
+                    onChange={(val) => this.isFileChosen()}
+                />
+                <SaveTaskButton 
+                    disabled={this.state.buttonDisabled}
+                    onClick={() => this.saveTask()}
+                />
+            </Form>
+        );
+    }
+}
 
 export default NewTaskForm;
