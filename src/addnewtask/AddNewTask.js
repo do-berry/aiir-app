@@ -1,13 +1,10 @@
 import React from 'react';
 import NewTaskForm from './NewTaskForm.js';
+import axios from 'axios';
 
 class AddNewTask extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        return(
+        return (
             <div className='addNewTask'>
                 <NewTaskForm />
             </div>

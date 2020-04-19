@@ -1,7 +1,6 @@
 import React from 'react';
 import InputField from './InputField.js';
 import SubmitButton from './SubmitButton.js';
-import UserStore from '../stores/UserStore.js';
 
 class LoginForm extends React.Component {
   constructor(props) {

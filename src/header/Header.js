@@ -11,7 +11,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div class="page-header">
+            <div className="page-header">
                 <MenuList menu={this.menu} />
             </div>
         );
@@ -22,8 +22,7 @@ function MenuList(props) {
     return (
         <ul>
             {props.menu.map((item) => 
-                <li><a
-                        key={item}
+                <li key={item}><a
                         href={item.toLowerCase().replace(/ /g, '')}
                         id={item}>
                 {item}</a></li>
