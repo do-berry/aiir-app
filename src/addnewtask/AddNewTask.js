@@ -1,6 +1,5 @@
 import React from 'react';
 import NewTaskForm from './NewTaskForm.js';
-import axios from 'axios';
 
 class AddNewTask extends React.Component {
     render() {

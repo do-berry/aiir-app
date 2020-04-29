@@ -2,6 +2,7 @@ import React from 'react';
 import UserStore from '../stores/UserStore.js';
 import LoginForm from './LoginForm';
 import SubmitButton from './SubmitButton';
+import { observer } from 'mobx-react';
 import './Login.css';
 
 class Login extends React.Component {
@@ -11,7 +12,7 @@ class Login extends React.Component {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             });
             let result = await res.json();
@@ -36,7 +37,7 @@ class Login extends React.Component {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             });
             let result = await res.json();
@@ -85,4 +86,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default observer(Login);

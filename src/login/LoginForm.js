@@ -1,6 +1,8 @@
 import React from 'react';
 import InputField from './InputField.js';
 import SubmitButton from './SubmitButton.js';
+import './Login.css';
+import UserStore from '../stores/UserStore.js';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -55,7 +57,11 @@ class LoginForm extends React.Component {
         })
       });
       let result = await res.json();
-      if (result && result.success === false) {
+      if (result && result.success) {
+        UserStore.isLoggedIn = true;
+        UserStore.username = result.username;
+      }
+      else if (result && result.success === false) {
         this.resetForm();
         alert(result.msg);
       }
