@@ -65,9 +65,9 @@ class RegisterForm extends React.Component {
         return (
             <div className='registerForm'>
                 <Form>
-                    <Container id='container'>
+                    <Container>
                         <Form.Group>
-                            <Form.Row xs='2' md='2's>
+                            <Form.Row xs='2' md='2'>
                                 <Col>
                                     <Form.Label>First name:</Form.Label>
                                 </Col>
