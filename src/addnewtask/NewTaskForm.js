@@ -44,23 +44,36 @@ class NewTaskForm extends React.Component {
         });
 
         try {
+            // sending form
             let res = await fetch('/newtaskform', {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     'taskName': this.state.taskName,
                     'camera_position': this.state.camera_position,
                     'camera_rotation': this.state.camera_rotation,
                     'light_position': this.state.light_position,
-                    'light_intensity': this.state.light_intensity,
-                    'file': this.state.file
+                    'light_intensity': this.state.light_intensity
                 })
             });
+            // sending file
+            let formData = new FormData();
+            formData.append('file', this.state.file);
+            let senddata = await fetch('/newtaskform', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'multipart/form-data'
+                },
+                body: formData
+            });
             let result = await res.json();
+            let result2 = await senddata.json();
             console.log(result.body.data);
+            console.log(result2.body.data);
         } catch (e) {
             this.resetForm();
         }
@@ -85,7 +98,7 @@ class NewTaskForm extends React.Component {
     handleChange = (e) => {
         var files = e.target.files;
         this.state.file = files[0];
-        console.log(this.state.file);
+        console.log(this.state.file.toString());
         console.log(document.querySelector('input[type="file"]').files[0]);
     };
 

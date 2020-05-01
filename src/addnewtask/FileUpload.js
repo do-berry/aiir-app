@@ -6,7 +6,7 @@ class FileUpload extends React.Component {
             <div className='inputField'>
                 <input
                     type='file'
-                    //accept='.obj'
+                    accept='.obj'
                     onChange={(e) => this.props.onChange(e)}
                 />
             </div>
