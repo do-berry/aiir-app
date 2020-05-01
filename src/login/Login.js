@@ -79,8 +79,11 @@ class Login extends React.Component {
         return (
             <div className='login'>
                 <div className='container'>
+                    <h2>Login</h2>
+                    <hr />
                     <LoginForm />
                 </div>
+                <p>No account yet? Register it <a href='/register'>here</a>.</p>
             </div>
         );
     }

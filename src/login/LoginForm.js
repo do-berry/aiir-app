@@ -3,6 +3,7 @@ import InputField from './InputField.js';
 import SubmitButton from './SubmitButton.js';
 import './Login.css';
 import UserStore from '../stores/UserStore.js';
+import Form from 'react-bootstrap/Form';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -73,28 +74,35 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className='loginForm'>
-        Log in
+      <Form>
+        <div className='loginForm'>
+        <Form.Group controlId='usernameInput'>
+          <Form.Label>Username:</Form.Label>
         <InputField
-          type='text'
-          placeholder='username'
-          value={this.state.username ? this.state.username : ''}
-          onChange={(val) => this.setInputValue('username', val)}
-        />
-
-        <InputField
-          type='password'
-          placeholder='password'
-          value={this.state.password ? this.state.password : ''}
-          onChange={(val) => this.setInputValue('password', val)}
-        />
-
-        <SubmitButton
-          text='Login'
-          disabled={this.state.buttonDisabled}
-          onClick={() => this.doLogin()}
-        />
-      </div>
+            type='text'
+            placeholder='username'
+            value={this.state.username ? this.state.username : ''}
+            onChange={(val) => this.setInputValue('username', val)}
+          />
+          </Form.Group>
+          <Form.Group controlId='passwordInput'>
+          <Form.Label>Password:</Form.Label>
+          <InputField
+            type='password'
+            placeholder='password'
+            value={this.state.password ? this.state.password : ''}
+            onChange={(val) => this.setInputValue('password', val)}
+          />
+          </Form.Group>
+          <Form.Group className='submitButton'>
+          <SubmitButton
+            text='Login'
+            disabled={this.state.buttonDisabled}
+            onClick={() => this.doLogin()}
+          />
+          </Form.Group>
+        </div>
+      </Form>
     )
   }
 }

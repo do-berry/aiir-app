@@ -6,7 +6,6 @@ import InputField from '../login/InputField.js';
 import './NewTaskForm.css';
 import './CameraPosition.css';
 import { Row, Col } from 'reactstrap';
-import update from 'react-addons-update';
 
 class NewTaskForm extends React.Component {
     constructor(props) {
@@ -105,8 +104,6 @@ class NewTaskForm extends React.Component {
     render() {
         return (
             <Form>
-                <h2>Add new task</h2>
-                <hr />
                 <Form.Group controlId="formTaskName">
                     <Form.Label>Enter task name:</Form.Label>
                     <div className='taskNameInput'>

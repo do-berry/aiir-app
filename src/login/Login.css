@@ -1,0 +1,7 @@
+.loginForm {
+    display: inline-block;
+}
+
+.loginForm input {
+    width: 290px;
+}
