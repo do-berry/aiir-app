@@ -20,7 +20,6 @@ class ObjFileInput extends React.Component {
     render() {
         return (
             <div className='fileInput'>
-                <br />
                 <input
                     type='file'
                     id="fileInput"

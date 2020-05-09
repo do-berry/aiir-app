@@ -4,6 +4,7 @@ import ObjFileInput from './ObjFileInput.js';
 import SaveButton from './SaveButton.js';
 import axios from 'axios';
 import example from '../defaults/example.json';
+import Form from 'react-bootstrap/Form';
 
 class NewTaskComponent extends React.Component {
     constructor(props) {
@@ -56,22 +57,24 @@ class NewTaskComponent extends React.Component {
     render() {
         return (
             <div className='newTask'>
-                <div className='jsonEditor'>
-                    <JsonEditor
-                        placeholder={example}
-                        onChange={(val) => this.handleJsonChange(val)}
-                    />
-                </div>
-                <div className='objFileInput'>
-                    <ObjFileInput
-                        onChange={(e) => this.handleFileInputChange(e)}
-                    />
-                </div>
-                <div className='saveButton'>
+                <Form>
+                    <Form.Label>Edit config file:</Form.Label>
+                    <Form.Group>
+                        <JsonEditor
+                            placeholder={example}
+                            onChange={(val) => this.handleJsonChange(val)}
+                        />
+                    </Form.Group>
+                    <Form.Label>Upload .obj files:</Form.Label>
+                    <Form.Group>
+                        <ObjFileInput
+                            onChange={(e) => this.handleFileInputChange(e)}
+                        />
+                    </Form.Group>
                     <SaveButton
                         onClick={() => { this.handleClick() }}
                     />
-                </div>
+                </Form>
             </div>
         );
     }
