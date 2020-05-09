@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import Login from './login/Login.js';
 import AllTasks from './alltasks/AllTasks.js';
 import Register from './register/Register.js';
-import NewTask from './example/NewTask.js';
+import NewTask from './addnewtask/NewTask.js';
 
 const BaseRouter = () => (
     <div>
