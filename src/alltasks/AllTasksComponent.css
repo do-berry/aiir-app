@@ -1,0 +1,8 @@
+.table {
+    max-width: 1000px;
+    margin: auto;
+}
+
+th, td {
+    width: 350px;
+}

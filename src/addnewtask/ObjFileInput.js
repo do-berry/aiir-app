@@ -24,9 +24,9 @@ class ObjFileInput extends React.Component {
                     type='file'
                     id="fileInput"
                     label="File input"
-                    accept='.jpg'           // will be changed to .obj
+                    accept='.obj'           // will be changed to .obj
                     onChange={(e) => this.props.onChange(e)}
-                    multiple
+                    //multiple
                 />
                 <br />
             </div>

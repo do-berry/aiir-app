@@ -34,17 +34,20 @@ class NewTaskComponent extends React.Component {
         }
 
         const configJSONFile = new Blob([JSON.stringify(this.state.configFile)], {
-            type: 'application/json'
+            //
         });
+        configJSONFile.lastModifiedDate = new Date();
+        //configJSONFile.filename = 'configJSONFile.json';
 
         const data = new FormData();
-        data.append('configJSONFile', configJSONFile);
-        for (var i = 0; i < this.state.selectedFiles.length; i++) {
-            data.append('objFile[' + i.toString() + ']', this.state.selectedFiles[i]);
-        }
+        data.append('configJSONFile', configJSONFile, 'configJSONFile.json');
+        // for (var i = 0; i < this.state.selectedFiles.length; i++) {
+        //     data.append('objFile[' + i.toString() + ']', this.state.selectedFiles[i]);
+        // }
+        data.append('objFile', this.state.selectedFiles[0]);
 
         try {
-            axios.post('/addnewtask', data, {
+            axios.post('http://127.0.0.1:8000/addnewtask/', data, {
                 'content-type': 'multipart/form-data'
             }).then(res => {
                 console.log(res);
